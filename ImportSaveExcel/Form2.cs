@@ -21,15 +21,22 @@ namespace ImportSaveExcel
             btnOk.Click += btnOk_Click;
             btnCancle.Click += btnCancle_Click;
             _starr = starr;
+            txtCustom.Text = "SELECT {0} FROM DUAL;";
         }
 
         private void btnOk_Click(object sender , EventArgs e)
         {
+            if(txtCustom.Text.IndexOf("{0}")  < 0 )
+            {
+                MessageBox.Show("입력형태를 맞춰야합니다 {0} 포함");
+                return;
+            }
+
             for(int i = 0; i < _starr.Length; i++)
             {
                 if (_starr[i] != null && _starr[i].Trim().Length > 0)
                 {
-                    customQuery += string.Format(txtCustom.Text, _starr[i]);
+                    customQuery += string.Format(txtCustom.Text, "'" +  _starr[i] + "'");
                     customQuery += Environment.NewLine + Environment.NewLine;
                 }
             }

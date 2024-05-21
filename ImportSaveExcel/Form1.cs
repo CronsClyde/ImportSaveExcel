@@ -25,6 +25,7 @@ namespace ImportSaveExcel
             btnLoad.Click += btnLoad_click;
 
             btnResult.Click += btnResult_Click;
+            btnResultClose.Click += btnResultClose_Click;
         }
 
         private void form1_load(object sender, EventArgs e)
@@ -114,45 +115,45 @@ namespace ImportSaveExcel
             {
                 if (dataGridView1.DataSource == null) return;
 
-                if (txtResult.Visible == false)
-                {
-                    Form2 f2 = new Form2(_starry);
-                    f2.ShowDialog();
-                    txtResult.Text = "";
+                if (txtResult.Visible == true) return;
 
-                    if (f2.customQuery != "")
+                Form2 f2 = new Form2(_starry);
+                f2.ShowDialog();
+                txtResult.Text = "";
+
+                if (f2.customQuery != "")
+                {
+                    txtResult.Text = f2.customQuery;
+                }
+                else
+                {
+                    for (int i = 0; i < _starry.Length; i++)
                     {
-                        txtResult.Text = f2.customQuery;
-                    }
-                    else
-                    {
-                        for (int i = 0; i < _starry.Length; i++)
+                        if (_starry[i] != null && _starry[i].Trim().Length > 0)
                         {
-                            if (_starry[i] != null && _starry[i].Trim().Length > 0)
-                            {
-                                txtResult.Text += _starry[i] + Environment.NewLine;
-                            }
+                            txtResult.Text += _starry[i] + Environment.NewLine;
                         }
                     }
-
-                    tabExcelLayout.SelectedIndex = 0;
-
-                    txtResult.Dock = DockStyle.Fill;
-                    dataGridView1.Visible = false;
-                    txtResult.Visible = true;
-                    
                 }
-                else if (txtResult.Visible == true)
-                {
-                    txtResult.Visible = false;
-                    dataGridView1.Visible = true;
-                }
+
+                tabExcelLayout.SelectedIndex = 0;
+
+                txtResult.Dock = DockStyle.Fill;
+                dataGridView1.Visible = false;
+                txtResult.Visible = true;
+
             }
             catch (Exception ex) { MessageBox.Show("결과창 에러 " + ex.ToString()); }
         }
 
+        private void btnResultClose_Click(object sender, EventArgs e)
+        {
+            txtResult.Visible = false;
+            dataGridView1.Visible = true;
+        }
 
-        private DataSet ImportExcel(string fileName = "")
+
+            private DataSet ImportExcel(string fileName = "")
         {
             try
             {
@@ -273,18 +274,25 @@ namespace ImportSaveExcel
 
         private void clearScreen()
         {
-            for (int i = 0; i < tabExcelLayout.TabPages.Count; i++)
+            try
             {
-                if (i + 1 >= tabExcelLayout.TabPages.Count) break;
-                tabExcelLayout.TabPages.Remove(tabExcelLayout.TabPages[i + 1]);
-            }
+                for (int i = 0; i < tabExcelLayout.TabPages.Count; i++)
+                {
+                    if (i + 1 >= tabExcelLayout.TabPages.Count) break;
+                    tabExcelLayout.TabPages.Remove(tabExcelLayout.TabPages[i + 1]);
+                }
 
-            for (int i = 0; i < _grdArray.Length; i++)
+                for (int i = 0; i < _grdArray.Length; i++)
+                {
+                    _grdArray[i].Columns.Clear();
+                    if (_grdArray[i].Rows.Count > 0) _grdArray[i].Rows.Clear();
+                    _grdArray[i].Refresh();
+                    _grdArray[i].DataSource = null;
+                }
+            }
+            catch (Exception ex)
             {
-                _grdArray[i].Columns.Clear();
-               if(_grdArray[i].Rows.Count > 0) _grdArray[i].Rows.Clear();
-                _grdArray[i].Refresh();
-                _grdArray[i].DataSource = null;
+                MessageBox.Show("clearScreen 오류" + ex.ToString());
             }
 
 

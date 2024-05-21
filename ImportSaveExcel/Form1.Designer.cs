@@ -33,9 +33,9 @@ namespace ImportSaveExcel
             btnLoad = new Button();
             txtExcelLoad = new RichTextBox();
             panel1 = new Panel();
-            txtResult = new RichTextBox();
             txtLocation = new TextBox();
             btnResult = new Button();
+            txtResult = new RichTextBox();
             dataGridView2 = new DataGridView();
             panel2 = new Panel();
             tabExcelLayout = new TabControl();
@@ -49,6 +49,7 @@ namespace ImportSaveExcel
             dataGridView4 = new DataGridView();
             dataGridView3 = new DataGridView();
             dataGridView1 = new DataGridView();
+            btnResultClose = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             panel2.SuspendLayout();
@@ -69,7 +70,7 @@ namespace ImportSaveExcel
             // 
             btnLoad.Location = new Point(608, 14);
             btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(75, 23);
+            btnLoad.Size = new Size(87, 23);
             btnLoad.TabIndex = 1;
             btnLoad.Text = "불러오기";
             btnLoad.UseVisualStyleBackColor = true;
@@ -85,6 +86,7 @@ namespace ImportSaveExcel
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnResultClose);
             panel1.Controls.Add(txtLocation);
             panel1.Controls.Add(btnResult);
             panel1.Controls.Add(txtExcelLoad);
@@ -94,15 +96,6 @@ namespace ImportSaveExcel
             panel1.Name = "panel1";
             panel1.Size = new Size(827, 76);
             panel1.TabIndex = 3;
-            // 
-            // txtResult
-            // 
-            txtResult.Location = new Point(240, 105);
-            txtResult.Name = "txtResult";
-            txtResult.Size = new Size(63, 27);
-            txtResult.TabIndex = 5;
-            txtResult.Text = "";
-            txtResult.Visible = false;
             // 
             // txtLocation
             // 
@@ -115,10 +108,19 @@ namespace ImportSaveExcel
             // 
             btnResult.Location = new Point(698, 14);
             btnResult.Name = "btnResult";
-            btnResult.Size = new Size(75, 23);
+            btnResult.Size = new Size(87, 23);
             btnResult.TabIndex = 3;
             btnResult.Text = "결과창";
             btnResult.UseVisualStyleBackColor = true;
+            // 
+            // txtResult
+            // 
+            txtResult.Location = new Point(240, 105);
+            txtResult.Name = "txtResult";
+            txtResult.Size = new Size(63, 27);
+            txtResult.TabIndex = 5;
+            txtResult.Text = "";
+            txtResult.Visible = false;
             // 
             // dataGridView2
             // 
@@ -261,6 +263,15 @@ namespace ImportSaveExcel
             dataGridView1.TabIndex = 0;
             dataGridView1.Visible = false;
             // 
+            // btnResultClose
+            // 
+            btnResultClose.Location = new Point(698, 43);
+            btnResultClose.Name = "btnResultClose";
+            btnResultClose.Size = new Size(87, 23);
+            btnResultClose.TabIndex = 5;
+            btnResultClose.Text = "결과창 닫기";
+            btnResultClose.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -329,5 +340,6 @@ namespace ImportSaveExcel
         private DataGridView dataGridView5;
         private DataGridView dataGridView4;
         private DataGridView dataGridView3;
+        private Button btnResultClose;
     }
 }

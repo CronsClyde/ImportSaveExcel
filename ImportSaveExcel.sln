@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportSaveExcel", "ImportSaveExcel\ImportSaveExcel.csproj", "{BBF31B18-A1D6-401C-ACB5-9482C9C6D018}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImportSaveExcel", "ImportSaveExcel\ImportSaveExcel.csproj", "{BBF31B18-A1D6-401C-ACB5-9482C9C6D018}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{0FA49B21-AD11-4510-9FA2-36CB8C4CC2B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,9 @@ Global
 		{BBF31B18-A1D6-401C-ACB5-9482C9C6D018}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBF31B18-A1D6-401C-ACB5-9482C9C6D018}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBF31B18-A1D6-401C-ACB5-9482C9C6D018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FA49B21-AD11-4510-9FA2-36CB8C4CC2B9}.Debug|Any CPU.ActiveCfg = Debug
+		{0FA49B21-AD11-4510-9FA2-36CB8C4CC2B9}.Debug|Any CPU.Build.0 = Debug
+		{0FA49B21-AD11-4510-9FA2-36CB8C4CC2B9}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
